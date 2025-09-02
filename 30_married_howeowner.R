@@ -8,7 +8,7 @@ library(tidyverse)
 library(ggplot2)
 
 ### set key
-set_ipums_api_key("59cba10d8a5da536fc06b59dcc87c7d8e31b4e688ab005439b26a080", 
+set_ipums_api_key(EnterYourAPIKeyHERE, 
                   install = TRUE)
 
 ### query ipum micro data
@@ -37,9 +37,6 @@ data <- download_extract(files, download_dir = "data/ipums",
 # Read microdata
 ddi   <- read_ipums_ddi(data)     
 micro <- read_ipums_micro(ddi)  
-
-### start working w data
-glimpse(micro)
 
 ### PERWT defines the number of ppl matched by x row
 made_man <- micro %>%
@@ -109,8 +106,7 @@ ggplot(aes(date, pct_married_in_owner_occ)) +
                               family = "roboto-slab",)
   )
 
-### what else can i share
-  ## share each one on it's own
+### look at marriage and homeownership separately
 made_man %>% 
   group_by(YEAR) %>% 
   ### percent married 
